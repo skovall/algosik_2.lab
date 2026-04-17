@@ -82,3 +82,23 @@ class Bus_route:
                 })
             else: break
         return result
+    
+    def generate_report(self, filename="route_report.txt"):
+        with open(filename, 'w', encoding='utf-8') as file:
+            file.write('ПОДРОБНЫЙ ОТЧЕТ О МАРШРУТЕ АВТОБУСА\n')
+            file.write(f"Всего остановок: {len(self.stops)}\n")
+            file.write(f"Общее время маршрута: {self.calculate_total_time()} минут\n\n")
+            file.write("Последовательность остановок:\n")
+            full_time = 0
+            for i, stop in enumerate(self.stops):
+                file.write(f"\n{i+1}. {stop.name}\n")
+                file.write(f"   Координаты: {stop.coordinates}\n")
+                file.write(f"   Время до следующей остановки: {stop.time_to_next} мин\n")
+                if i == 0:
+                    file.write(f"   Время в пути: 0 мин\n")
+                else:
+                    full_time += self.stops[i-1].time_to_next
+                    file.write(f"   Время в пути: {full_time} мин\n")
+            file.write("КОНЕЦ ОТЧЕТА\n")
+            
+        print(f"Отчет сохранен в файл '{filename}'.")
