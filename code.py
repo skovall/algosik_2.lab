@@ -36,17 +36,8 @@ class Bus_route:
         self.stops = []
 
     def add_stop(self, stop):
-        self.stops.append(stop)
+        self.stops += stop
         print(f"В маршрут добавлена остановка {stop.name}.")
-
-    def remove_stop(self, name):
-        for stop in self.stops:
-            if stop.name == name:
-                self.stops.remove(stop)
-                print(f"Остановка '{name}' удалена из маршрута")
-                return True
-        print(f"Остановка '{name}' не найдена")
-        return False
 
     def calculate_full_time(self):
         if not self.stops:
@@ -55,6 +46,20 @@ class Bus_route:
         for stop in self.stops:
             full_time += stop.time_to_next
         return full_time
+    
+    def bus_position_after_n_stops(self, current_bus_stop_name, n_stops):
+        current_position = self.stops.index(current_bus_stop_name)
+        if current_bus_stop_name + n_stops >= len(self.stops):
+            return f"Автобус проедет все {len(self.stops)} остановок и завершит маршрут."
+        return f"Через {n_stops} остановок автобус будет на остановке: {self.stops[current_position + n_stops].name}"
+    
+    def reverse_route(self):
+        re_route = Bus_route()
+        for stop in reversed(self.stops):
+            reverse_stop = Bus_Stop(stop.name, stop.coordinates, stop.time_to_next)
+            re_route.add_stop(reverse_stop)
+        return re_route
+    
 route = Bus_route()
-stop = Bus_Stop('jijo','898090','90')
+stop = Bus_Stop('jijo','89.80.90','90')
 route.add_stop(stop)
