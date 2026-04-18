@@ -32,6 +32,12 @@ class Bus_route:
         if new_position >= len(self.stops):
             return f'Автобус проедет все {len(self.stops)} остановок и завершит маршрут.'
         return f'Через {n_stops} остановок автобус будет на остановке: {self.stops[new_position].name}.'
+    
+    def bus_position_after_n_stops_from(self, current_bus_stop_name, n_stops):
+        current_position = self.stops.index(current_bus_stop_name)
+        if current_position + n_stops >= len(self.stops):
+            return f'Автобус проедет все {len(self.stops)} остановок и завершит маршрут.'
+        return f'Через {n_stops} остановок автобус будет на остановке: {self.stops[current_position + n_stops].name}.'
 
     def add_stop(self, stop):
         self.stops += [stop]
@@ -92,6 +98,5 @@ class Bus_route:
                 else:
                     full_time += self.stops[i-1].time_to_next
                     file.write(f'   Время в пути: {full_time} мин\n')
-            file.write('КОНЕЦ ОТЧЕТА\n')
-            
+            file.write('КОНЕЦ ОТЧЕТА\n')  
         print(f'Отчет сохранен в файл "{filename}".')
