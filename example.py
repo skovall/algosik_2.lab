@@ -33,8 +33,6 @@ print()
 
 print('6. Обратный маршрут.')
 reverse = route.reverse_route()
-for i, stop in enumerate(reverse.stops):
-    print(f'{i+1}. {stop.name} (до следующей: {stop.time_to_next} мин)')
 print()
 
 print('7. Генерация отчета.')
