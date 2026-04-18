@@ -5,6 +5,7 @@
 - название
 - координаты
 - время до следующей остановки
+
 '''pyton
 class Bus_Stop:
     def __init__(self, name, coordinates, time_to_next):
@@ -12,12 +13,14 @@ class Bus_Stop:
         self.coordinates = coordinates
         self.time_to_next = time_to_next
 '''
+
 ### Обязательная часть
 Реализовать следующие функции:
 - Добавление остановки
 - Расчет общего времени маршрута
 - Определение, где будет автобус через N остановок
 - Построение обратного маршрута
+
 '''pyton
 class Bus_route:
     def __init__(self):
@@ -64,11 +67,13 @@ class Bus_route:
             re_route.add_stop(reverse_stop)            
             n+=1
         return re_route
+'''
 
 ### Вариативная часть (на выбор)
 Реализовать 2 и 4 функций:
 *2. Найти остановки, до которых автобус доедет за заданное время*
 *4. Создать функцию формирования подробного отчета маршрута с сохранением в текстовый файл*
+
 '''pyton
     def find_stops_by_time(self, time):
         result = []
