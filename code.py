@@ -1,6 +1,3 @@
-import base64
-import json
-
 class Bus_Stop:
     def __init__(self, name, coordinates, time_to_next):
         self.name = name
