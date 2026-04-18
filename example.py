@@ -6,6 +6,7 @@ route.add_stop(Bus_Stop('Спортивная', '55.47.55', 15))
 route.add_stop(Bus_Stop('Ленина', '55.45.56', 20))
 route.add_stop(Bus_Stop('Кинотеатр Современник', '55.47.57', 25))
 route.add_stop(Bus_Stop('Имени Николаева', '55.47.58', 0))
+print()
 
 print('1. Информация об остановке.')
 print(route.stops[0].show_info())
@@ -38,5 +39,4 @@ print()
 
 print('7. Генерация отчета.')
 route.generate_report('route_report.txt')
-print("Отчет сохранен в файл 'route_report.txt'")
 print()
